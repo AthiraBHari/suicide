@@ -1,0 +1,29 @@
+{% extends 'temp/student_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>manage users</title>
+</head>
+<body>
+<center>
+	<table border="1" class="table table-bordered table-striped">
+		<tr>
+			<th>Result</th>
+			<th>Description</th>
+		</tr>
+     {% for i in x %}
+		<tr>
+			<td>{{ i.result_type}}</td>
+			<td>{{ i.description  }}</td>
+
+		</tr>
+      {% endfor %}
+
+
+	</table>
+</center>
+
+</body>
+</html>
+{% endblock %}

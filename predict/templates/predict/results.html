@@ -1,0 +1,26 @@
+{% extends 'temp/student_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: black">Predicting Result is:  {{ kk }}</h1>
+
+    {% if kk != 'No Depression Found.' %}
+    <div class="center">
+        <a href="/appointment/post_appointment/" class="btn btn-primary">Consult</a>
+    </div>
+    {% endif %}
+
+</body>
+</html>
+{% endblock %}

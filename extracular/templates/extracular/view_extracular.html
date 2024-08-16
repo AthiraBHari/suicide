@@ -1,0 +1,39 @@
+{% extends 'temp/admin_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Extracurricular activities Status</title>
+</head>
+<body>
+<center>
+	<h2>View Extracurricular activities Status</h2>
+	<table border="1" class="table table-bordered table-light table-striped">
+
+		<tr>
+            <th>Activity</th>
+			<th>User Name</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Status</th>
+
+		</tr>
+         {% for i in x %}
+		<tr>
+			<td>{{ i.activity_name}}</td>
+            <td>{{ i.user.name }}</td>
+			<td>{{ i.date }}</td>
+			<td>{{ i.time }}</td>
+        <td>{{ i.status }}</td>
+
+
+
+
+		</tr>
+        {% endfor %}
+
+	</table>
+</center>
+</body>
+</html>
+{% endblock %}
