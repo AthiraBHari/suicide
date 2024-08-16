@@ -1,0 +1,78 @@
+{#{% extends 'temp/admin_view.html' %}#}
+{#{%block base%}#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#	<title>View Task </title>#}
+{#</head>#}
+{#<body>#}
+{#<center>#}
+{#	<h2>View Task </h2>#}
+{#	<table border="1" class="table table-bordered table-striped">#}
+{#		<tr>#}
+{#			<th>task</th>#}
+{#			<th>Uploaded task</th>#}
+{#			<th>Due Date</th>#}
+{##}
+{#			#}
+{#			#}
+{#		</tr>#}
+{#        {% for i in x %}#}
+{#		<tr>#}
+{#			<td>{{ i.task }}</td>#}
+{#			<td><a href="/static/{{ i.upload_task }}"><img src="/static/{{ i.upload_task }}" height="50" width="50"></a> </td>#}
+{#			<td>{{ i.due_date }}</td>#}
+{#            <td><a href="/static/{{ i.upload_task }}" class="btn btn-primary">Download</a> </td>#}
+{#            <td><a href="/assign/post_assign/{{ i.task_id }}" class="btn btn-primary">Assign</a> </td>#}
+{#			<td><a href="/task/accept/{{ i.task_id }}">Accept</a></td>#}
+{#            <td><a href="/task/reject/{{ i.task_idid }}">Reject</a></td>#}
+{#		</tr>#}
+{#        {% endfor %}#}
+{#		#}
+{#	</table>#}
+{#</center>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'temp/admin_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Task </title>
+</head>
+<body>
+<center>
+    <h2>View Task </h2>
+    <table border="1" class="table table-bordered table-striped">
+        <tr>
+            <th>Task</th>
+            <th>Uploaded Task</th>
+            <th>Due Date</th>
+        </tr>
+        {% for i in x %}
+        <tr>
+            <td>{{ i.task }}</td>
+            {% if i.upload_task %}
+                <td>
+                    <a href="/static/{{ i.upload_task }}">
+                        <img src="/static/{{ i.upload_task }}" height="50" width="50">
+                    </a>
+                </td>
+            {% else %}
+                <td>No file uploaded</td>
+            {% endif %}
+            <td>{{ i.due_date }}</td>
+            {% if i.upload_task %}
+                <td><a href="/static/{{ i.upload_task }}" class="btn btn-primary">Download</a></td>
+            {% else %}
+                <td>No file available for download</td>
+            {% endif %}
+            <td><a href="/assign/post_assign/{{ i.task_id }}" class="btn btn-primary">Assign</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
+{% endblock %}

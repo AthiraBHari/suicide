@@ -1,0 +1,49 @@
+{% extends 'temp/admin_view.html' %}
+{%block base%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Task</title>
+</head>
+<body>
+<div class="text-center">
+            <b><p id="msg" class="text-dark"> </p> </b>
+<center>
+	<h2>Add Task</h2>
+	<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+		<table>
+            <tr>
+				<td>Task</td>
+				<td><input type="text" name="tsk" required="" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Add Task</td>
+				<td><input type="file" name="addtask"  class="form-control"></td>
+			</tr>
+            <tr>
+				<td>Due Date</td>
+				<td><input type="date" name="ddate" required="" class="form-control" id="date" min=""></td>
+			</tr>
+			<tr>
+				<td></td>
+
+				<td><input type="submit" value="Add Task" class="btn btn-primary"></td>
+			</tr>
+		</table>
+		
+	</form>
+{#    {% if msg %}#}
+{#    <script>#}
+{#        alert('sucessfull')#}
+{#    </script>#}
+{#    {% endif %}#}
+</center>
+<script>
+    var date=new Date().toISOString().split('T')[0];
+    document.getElementById('date').min=date;
+</script>
+
+</body>
+</html>
+{% endblock %}

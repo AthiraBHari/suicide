@@ -1,0 +1,87 @@
+{% extends 'temp/login.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        input:focus{
+            color: red;
+
+        }
+    </style>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var atIndex = email.indexOf("@");
+            if (atIndex == -1) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            var domain = email.substring(atIndex + 1);
+            if (domain !== "gmail.com") {
+                alert("Please enter a Gmail address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="wrapper">
+<center>
+    <h2>User Registration</h2>
+    <form method="post" onsubmit="return validateEmail();">
+        {% csrf_token %}
+
+        <!-- alert message-->
+{#         <div class="text-center">#}
+{#            <b><p id="msg" class="text-dark"> </p> </b>#}
+{##}
+{#        </div>#}
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="username" required class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" id="email" name="email" required class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="text" name="phone" pattern="[0-9]{10}" minlength="10" maxlength="10" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="text" name="age" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>Male<input type="radio" name="gender" value="male" checked>
+            Female<input type="radio" name="gender" value="female"></td>
+        </tr>
+        <tr>
+            <td>Qualification</td>
+            <td><input type="text" name="qualification" required class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" required class="form-control"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Register" class="btn btn-primary"style="background-color: green; font-weight: bold"></td>
+        </tr>
+    </table>
+    {% if msg %}
+       <h6 style="color: white">{{ msg }}</h6>
+    {% endif %}
+
+
+    </form>
+</center>
+</div>
+</body>
+</html>
+{% endblock %}

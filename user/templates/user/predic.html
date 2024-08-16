@@ -1,0 +1,26 @@
+{% extends 'temp/student_view.html' %}
+
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Predict</title>
+</head>
+<body>
+<center>
+	<h2>Predict</h2>
+	<table border="1" class="table table-bordered table-striped">
+		<tr>
+			<th>Name</th>
+		</tr>
+        {% for i in x %}
+		<tr>
+			<td>{{ i.name }}</td>
+        <td><a href="/predict/predict/{{ i.user_id }}" class="btn btn-primary">Predict</a> </td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</body>
+</html>
+{% endblock %}
