@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Complaints</title>
+</head>
+<body>
+<center>
+	<h2>View Complaints</h2>
+	<table border="1" class="table table-bordered table-striped">
+		<tr>
+			<th>Complaints</th>
+			<th>User Name</th>
+            <th>Reply</th>
+			<th>Date</th>
+			<th>Time</th>
+			
+		</tr>
+        {% for i in x %}
+		<tr>
+			<td>{{ i.complaint  }}</td>
+			<td>{{ i.user.name }}</td>
+            <td>{{ i.replay }}</td>
+			<td>{{ i.date }}</td>
+			<td>{{ i.time }}</td>
+			<td>
+				<a href="/complaint/addreplay/{{ i.complaint_id }}" class="btn btn-info">Replay</a>
+			</td>
+			
+		</tr>
+        {% endfor %}
+		
+	</table>
+</center>
+</body>
+</html>

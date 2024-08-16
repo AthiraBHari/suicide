@@ -1,0 +1,39 @@
+{% extends 'temp/counsellor_view.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Appointment</title>
+</head>
+<body>
+<center>
+    <h2>View Appointment</h2>
+    <!-- Display the message -->
+    {% if msg %}
+        <!-- Display the message only if it's not None -->
+        <p id="msg" class="text-dark">{{ msg }}</p>
+    {% endif %}
+    <table border="1" class="table table-bordered table-striped">
+        <tr>
+            <th>User Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+        {% for i in x %}
+        <tr>
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.date }}</td>
+            <td>{{ i.time }}</td>
+            <td>{{ i.status }}</td>
+            <td><a href="/appointment/accept/{{ i.appointment_id }}" class="btn btn-success">Accept</a></td>
+            <td><a href="/appointment/reject/{{ i.appointment_id }}" class="btn btn-danger">Reject</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
+
+{% endblock %}

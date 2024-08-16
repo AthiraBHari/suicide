@@ -1,0 +1,108 @@
+{#{% extends 'temp/student_view.html' %}#}
+{#{%block base%}#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#	<title>View Task Status</title>#}
+{#</head>#}
+{#<body>#}
+{#<center>#}
+{#	<h2>View Task </h2>#}
+{#<div class="text-center">#}
+{#            <b><p id="msg" class="text-dark"> </p> </b>#}
+{#	<table border="1" class="table table-bordered">#}
+{##}
+{#		<tr>#}
+{#			<th>User Name</th>#}
+{#            <th>Task</th>#}
+{#            <td>Details</td>#}
+{#			<th>Date</th>#}
+{#			<th>Time</th>#}
+{#			<th>Status</th>#}
+{#			#}
+{#		</tr>#}
+{#         {% for i in x %}#}
+{#		<tr>#}
+{#			<td>{{ i.user.name }}</td>#}
+{#            <td>{{ i.task.task }}</td>#}
+{#            <td><img src="/static/{{ i.task.upload_task }}" height="50" width="50"></td>#}
+{#			<td>{{ i.date }}</td>#}
+{#			<td>{{ i.time }}</td>#}
+{#			<td>{{ i.status }}</td>#}
+{#            <td><a href="/static/{{ i.task.upload_task}}" class="btn btn-primary">Download</a></td>#}
+{#        <td><a href="/assign/completed/{{ i.assign_id }}" class="btn btn-success">Completed</a> </td>#}
+{#        <td><a href="/assign/not/{{ i.assign_id }}" class="btn btn-danger">Not Completed</a> </td>#}
+{#        <td><a href="/assign/upload/{{ i.assign_id }}" class="btn btn-danger">Upload</a> </td>#}
+{##}
+{#			#}
+{#			#}
+{#			#}
+{#		</tr>#}
+{#        {% endfor %}#}
+{#		#}
+{#	</table>#}
+{# {% if msg %}#}
+{#    <script>#}
+{#        alert('sucessfull')#}
+{#    </script>#}
+{#    {% endif %}#}
+{#</center>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+{% extends 'temp/student_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Task Status</title>
+</head>
+<body>
+<center>
+    <h2>View Task</h2>
+    <div class="text-center">
+        <b><p id="msg" class="text-dark"></p></b>
+        <table border="1" class="table table-light table-striped table-bordered">
+            <tr>
+                <th>User Name</th>
+                <th>Task</th>
+                <td>Details</td>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+                <td>{{ i.user.name }}</td>
+                <td>{{ i.task.task }}</td>
+                {% if i.task.upload_task %}
+                <td><img src="/static/{{ i.task.upload_task }}" height="50" width="50"></td>
+                {% else %}
+                <td>No files available</td>
+                {% endif %}
+                <td>{{ i.date }}</td>
+                <td>{{ i.time }}</td>
+                <td>{{ i.status }}</td>
+                <td>
+    {% if i.task.upload_task %}
+        <a href="{% url 'download_file' filename=i.task.upload_task %}" class="btn btn-primary">Download</a>
+
+    {% else %}
+        No files available
+    {% endif %}
+</td>
+
+                <td><a href="/assign/completed/{{ i.assign_id }}" class="btn btn-success">Completed</a></td>
+                <td><a href="/assign/not/{{ i.assign_id }}" class="btn btn-danger">Not Completed</a></td>
+                <td><a href="/assign/upload/{{ i.assign_id }}" class="btn btn-danger">Upload</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</center>
+</body>
+</html>
+{% endblock %}

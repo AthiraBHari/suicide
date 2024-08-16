@@ -1,0 +1,115 @@
+{#{% extends 'temp/admin_view.html' %}#}
+{#{%block base%}#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#	<title>View Task Status</title>#}
+{#</head>#}
+{#<body>#}
+{#<center>#}
+{#	<h2>View Task Status</h2>#}
+{#	<table border="1" class="table table-bordered table-striped">#}
+{##}
+{#		<tr>#}
+{#			<th>User Name</th>#}
+{#			<th>Upload Date</th>#}
+{#            <th>Task</th>#}
+{#			<th>Time</th>#}
+{#			<th>Status</th>#}
+{#			#}
+{#		</tr>#}
+{#         {% for i in x %}#}
+{#		<tr>#}
+{#			<td>{{ i.user.name }}</td>#}
+{#			<td>{{ i.up_date }}</td>#}
+{#            <td>{{ i.task.task }}</td>#}
+{#			<td>{{ i.time }}</td>#}
+{#			<td>{{ i.status }}</td>#}
+{#            <td><a href="/static/{{ i.upload }}" class="btn btn-primary">Download</a> </td>#}
+{#        <td><a href="/assign/completed/{{ i.assign_id }}" class="btn btn-primary">Completed</a> </td>#}
+{#        <td><a href="/assign/not/{{ i.assign_id }}" class="btn btn-primary">Not Completed</a> </td>#}
+{#			#}
+{#			#}
+{#			#}
+{#		</tr>#}
+{#        {% endfor %}#}
+{#		#}
+{#	</table>#}
+{#</center>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+{#{% extends 'temp/admin_view.html' %}#}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>View Task Status</title>#}
+{#</head>#}
+{#<body>#}
+{#<center>#}
+{#    <h2>View Task Status</h2>#}
+{#    <table border="1" class="table table-bordered table-striped">#}
+{#        <tr>#}
+{#            <th>User Name</th>#}
+{#            <th>Upload Date</th>#}
+{#            <th>Task</th>#}
+{#            <th>Status</th>#}
+{#        </tr>#}
+{#        {% for i in x %}#}
+{#        <tr>#}
+{#            <td>{{ i.user.name }}</td>#}
+{#            <td>{{ i.up_date }}</td>#}
+{#            <td>{{ i.task.task }}</td>#}
+{#            <td>{{ i.status }}</td>#}
+{#            <td><a href="/static/{{ i.upload }}" class="btn btn-primary">Download</a></td>#}
+{#            <td><a href="/assign/completed/{{ i.assign_id }}" class="btn btn-primary">Completed</a></td>#}
+{#            <td><a href="/assign/not/{{ i.assign_id }}" class="btn btn-primary">Not Completed</a></td>#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#</center>#}
+{#</body>#}
+{#</html>#}
+{#  2nd    {% endblock %}#}
+
+{% extends 'temp/admin_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Task Status</title>
+</head>
+<body>
+<center>
+    <h2>View Task Status</h2>
+    <table border="1" class="table table-bordered table-striped">
+        <tr>
+            <th>User Name</th>
+            <th>Upload Date</th>
+            <th>Submitted Date</th>
+            <th>Submitted Time</th>
+            <th>Task</th>
+            <th>Status</th>
+        </tr>
+        {% for i in x %}
+        <tr>
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.up_date }}</td>
+            <td>{{ i.date }}</td> <!-- Display submitted date -->
+            <td>{{ i.time }}</td> <!-- Display submitted time -->
+            <td>{{ i.task.task }}</td>
+            <td>{{ i.status }}</td>
+            <td><a href="/static/{{ i.upload }}" class="btn btn-primary">Download</a></td>
+{#            <td><a href="/assign/completed/{{ i.assign_id }}" class="btn btn-primary">Completed</a></td>#}
+{#            <td><a href="/assign/not/{{ i.assign_id }}" class="btn btn-primary">Not Completed</a></td>#}
+{#        </tr>#}
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
+{% endblock %}
+

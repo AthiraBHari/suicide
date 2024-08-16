@@ -1,0 +1,55 @@
+{% extends 'temp/student_view.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Appoinment</title>
+</head>
+<body>
+<center>
+	<h2>Appoinment</h2>
+	<form method="post">
+        {% csrf_token %}
+
+		<table>
+{#			<tr>#}
+{#				<td>Username</td>#}
+{#				<td><input type="text" name="uname"></td>#}
+{#			</tr>#}
+			<tr>
+				<td>Counsellor Name</td>
+                <td><select name="counsname">
+                    <option>--select--</option>
+                    {% for i in a %}
+                    <option value ="{{ i.counsellor_id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select></td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td><input type="date" name="date" required="" class="form-control" id="date" min=""></td>
+			</tr>
+			<tr>
+				<td>Time</td>
+				<td><input type="time" name="time" required="" class="form-control"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="submit" class="btn btn-primary"></td>
+			</tr>
+		</table>
+		
+	</form>
+
+</center>
+<div class="text-center">
+            <b><p id="msg" class="text-dark"> </p> </b>
+<script>
+    var date=new Date().toISOString().split('T')[0];
+    document.getElementById('date').min=date;
+</script>
+</body>
+</html>
+
+{% endblock %}

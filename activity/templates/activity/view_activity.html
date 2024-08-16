@@ -1,0 +1,52 @@
+{% extends 'temp/student_view.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Activity</title>
+    <script>
+        // JavaScript function to show the alert message
+        function showAlert(message) {
+            // Get the element with id 'msg' and set its innerHTML to the message
+            document.getElementById('msg').innerHTML = message;
+            // Make the alert visible by setting its display property to 'block'
+            document.getElementById('msg').style.display = 'block';
+            // Hide the alert after 3 seconds (3000 milliseconds)
+            setTimeout(function() {
+                document.getElementById('msg').style.display = 'none';
+            }, 15000);
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h2>View Activity</h2>
+    <!-- alert message-->
+    <div class="text-center">
+        <p id="msg" class="text-dark" style="display: none;"></p> <!-- Initially hidden -->
+    </div>
+    <table border="1" class="table table-responsive">
+        <tr>
+            <th>Uploaded Activity</th>
+            <th>Due Date</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+        {% for activity in activities %}
+        <tr>
+            <td>{{ activity.activity_name }}</td>
+            <td>{{ activity.due_date }}</td>
+            <td>{{ activity.date }}</td>
+            <td>{{ activity.time }}</td>
+            <td>{{ activity.status }}</td>
+            <td><a href="/activity/approve/{{ activity.activity_id }}" class="btn btn-primary" onclick="showAlert('Activity completed.');">Completed</a></td>
+            <td><a href="/activity/reject/{{ activity.activity_id }}" class="btn btn-primary" onclick="showAlert('Activity not completed.');">Not Completed</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
+{% endblock %}

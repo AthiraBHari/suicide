@@ -1,0 +1,41 @@
+{% extends 'temp/student_view.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Appoinment </title>
+</head>
+<body>
+<center>
+	<h2>View Appoinment</h2>
+	<table border="1" class="table table-bordered table-striped">
+		<tr>
+			<th>Counsellor Name</th>
+			<th>Date</th>
+			<th>Time</th>
+            <th>status</th>
+
+			
+			
+		</tr>
+        {% for i in x %}
+		<tr>
+			<td>{{ i.counsellor.name}}</td>
+			<td>{{ i.date }}</td>
+			<td>{{ i.time }}</td>
+            <td>{{ i.status }}</td>
+{#            <td><a href="/appointment/accept/{{ i.appointment_id }}" class="btn btn-success">accept</a> </td>#}
+{#            <td><a href="/appointment/reject/{{ i.appointment_id }}" class="btn btn-danger">reject</a> </td>#}
+{#			#}
+{#			#}
+{#			#}
+{#			#}
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</body>
+</html>
+
+{% endblock %}

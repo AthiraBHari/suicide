@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Replay</title>
+</head>
+<body>
+<center>
+    <h2>View Replay</h2>
+    <table border="1" class="table table-bordered table-striped">
+
+        <tr>
+        <th>Complaint</th>
+        <th>Replay</th>
+        </tr>
+{% for i in x %}
+        <tr>
+            <td>{{ i.complaint }}</td>
+            <td>{{ i.replay }}</td>
+        </tr>
+        {% endfor%}
+    </table>
+</center>
+</body>
+</html>

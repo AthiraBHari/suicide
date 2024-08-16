@@ -1,0 +1,60 @@
+{% extends 'temp/admin_view.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Activity</title>
+</head>
+<body>
+<center>
+	<h2>Add Activity</h2>
+	<form method="post">
+        {% csrf_token %}
+
+
+    <!-- alert message-->
+         <div class="text-center">
+            <b><p id="msg" class="text-dark"> </p> </b>
+
+        </div>
+		<table>
+            <tr>
+                <td>User Name</td>
+                <td><select name="uname" required="" class="form-control">
+                    {% for i in x %}
+                        <option value="{{ i.user_id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+				<td>Activity Name</td>
+				<td><input type="text" name="activity" required="" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Due Date</td>
+				<td><input type="date" name="ddate" required="" class="form-control" id="date" min=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="submit" class="btn btn-primary"></td>
+			</tr>
+		</table>
+
+	</form>
+{#    {% if msg %}#}
+{#    <script>#}
+{#        alert('sucessfull')#}
+{#    </script>#}
+{#    {% endif %}#}
+</center>
+<script>
+    // Set minimum date value to today's date
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').min = today;
+</script>
+
+
+</body>
+</html>
+
+{% endblock %}
